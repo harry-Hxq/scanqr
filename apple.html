@@ -28,7 +28,7 @@
       word-break:break-all;
     }
     .main{
-      display: none;
+      display: block;
       width: 100%;
       height: 1000px;
       position: relative;
@@ -82,6 +82,20 @@
     }
   </style>
 </head>
+<script>
+    function isWeiXin(){
+        var ua = window.navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    if(!isWeiXin()){
+        window.location.href = "https://itunes.apple.com/us/app/%E5%BD%A9%E4%B9%9D%E5%BD%A9%E7%A5%A8/id1196677652?l=zh&ls=1&mt=8";
+    }
+
+</script>
 <body>
 <div id="main" class="main">
   <div class="arrow"><img src="data:image/png;base64,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" /></div>
@@ -92,96 +106,5 @@
     点击右上角<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAKCAYAAADYUyzjAAAAAXNSR0IArs4c6QAAAJhJREFUOBHNVNsNgCAMJO7FYrgVczgHWyjeJfhTCujHJTa5KKXXK+URQrNaawQyUBr4H5/50ZcxgIaHxAm4AGsnHGlSlI4HYa6YBYyMc13n6AN0PCTnNqws266BoOVBgGdqZcUpTMrbrOBfxizseFGMF+P5bCovxvP1POyh9hAbyU96CN4B74bRN3su9Ly2Es1DabrG4UrvBuPYEgi0dGB2AAAAAElFTkSuQmCC" />图标，选择在safari中打开
   </div>
 </div>
-<script src="http://sp-res.kosungames.com/common/crypt/md5.js"></script>
-<script>
-  (function () {
-    const sortObj = (obj) => {
-      let sortKeys = Object.keys(obj).sort()
-      let newObj = {}
-      for (let key of sortKeys) {
-        let val = obj[key]
-        if (typeof val == 'object') {
-          if (Array.isArray(val)) {
-            newObj[key] = sortArray(val)
-          } else if (!Array.isArray(val) && Object.keys(val).length > 0) {
-            newObj[key] = sortObj(val)
-          } else {
-            newObj[key] = val
-          }
-        } else {
-          newObj[key] = val
-        }
-      }
-      return newObj
-    };
-
-    const sortArray = (arr) => {
-      let newArr = []
-      for (let i = 0; i < arr.length; i++) {
-        let val = arr[i]
-        if (typeof val == 'object') {
-          if (Array.isArray(val)) {
-            newArr[i] =  sortArray(val)
-          } else if (Object.keys(val).length > 0) {
-            newArr[i] = sortObj(val)
-          } else {
-            newArr[i] = val
-          }
-        } else {
-          newArr[i] = val
-        }
-      }
-      return newArr
-    };
-
-    const getContentStr = (data) => {
-      let content = sortObj(Object.assign({}, data))
-      let keys = Object.keys(content).sort()
-      let newArr = []
-      for (let key of keys) {
-        let val = content[key]
-        if (typeof val === 'Object') {
-          val = JSON.stringify(val)
-        }
-        newArr.push(`${key}=${val}`)
-      }
-      let contentStr = newArr.join('&')
-      contentStr += 'kosun.net'
-      return contentStr
-    };
-
-    const data = {act: '508'}
-    const auth = getContentStr(data);
-    const headers = new Headers({
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'authorization': hex_md5(auth)
-    });
-    const body = JSON.stringify(data);
-    fetch('/index', {
-      method: 'POST',
-      headers,
-      body }).then(res => {
-      return res.json();
-    }).then(data => {
-      const ua = navigator.userAgent;
-      const obj = document.querySelector('#main');
-      if (ua.indexOf('Android') > -1 || ua.indexOf('Adr') > -1) {
-        if (/MicroMessenger/.test(ua)) {
-          obj.style.display = 'block';
-        } else {
-          location.href = data.mobile_download_android;
-        }
-      } else if (!!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/) || ua.match(/iPad/i) !== null) {
-        obj.style.display = 'none';
-        location.href = data.mobile_download_ios;
-      } else {
-        obj.style.display = 'none';
-      }
-    }).catch(err => {
-      console.log(err)
-    });
-  })();
-</script>
 </body>
 </html>
