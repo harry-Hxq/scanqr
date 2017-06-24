@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>微信弹出遮罩</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width,height=device-height">
+  <style type="text/css">
+    @font-face {
+      font-family: Hanzipen;
+      src: url('http://sp-res.kosungames.com/common/fonts/Hanzipen.ttf');
+    }
+    *, *:before, *:after {
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    *:focus {
+      outline: 0;
+    }
+    input {
+      border-radius: 0;
+    }
+    html, body {
+      user-select: none;
+      word-break:break-all;
+    }
+    .main{
+      display: block;
+      width: 100%;
+      height: 1000px;
+      position: relative;
+      background-color: #000;
+      opacity: 0.7;
+    }
+    .main div {
+      position: absolute;
+    }
+    .arrow {
+      top: 43px;
+      right: 17px;
+    }
+    .arrow img {
+      width: 30px;
+      height: auto;
+    }
+    .dot {
+      top: 90px;
+      left: 50%;
+      margin-left: -7px;
+    }
+    .dot img {
+      width: 15px;
+      heigth: auto;
+    }
+    .finger {
+      top: 97px;
+      left: 50%;
+      margin-left: -12px
+    }
+    .finger img {
+      width: 31px;
+      height: auto;
+    }
+    .text {
+      width: 100%;
+      top: 145px;
+      color: #FFF;
+      font-size: 16px;
+      text-align: center;
+      font-family: 'Hanzipen', Georgia, "Times New Roman", "Microsoft YaHei",
+      "微软雅黑",
+      STXihei, "华文细黑", serif;
+    }
+    .text img{
+      width: 16px;
+      height: auto;
+      vertical-align: middle;
+      margin: 0 5px;
+    }
+  </style>
+</head>
+<script>
+    function isWeiXin(){
+        var ua = window.navigator.userAgent.toLowerCase();
+        if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    if(!isWeiXin()){
+        window.location.href = "http://apk.kosungames.com/app-c9-release.apk";
+    }
+
+</script>
+<body>
+<div id="main" class="main">
+  <div class="arrow"><img src="data:image/png;base64,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" /></div>
+  <div class="dot"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAAAXNSR0IArs4c6QAAAetJREFUSA3Fl1tPwkAQhSkiaiSiPBGNCSZG/v+/kfhEICEkJuCDhotaz7duN0tbLFjYnmTabWc6Z2av06i2I+I4PpNpR3IloX0qaUjWkpVkKZlLZlEUfepeiKjIQqTXsrmXXBbZenqCGCmId+9dprmVXKQXsn6QkOl/8aoPhwqC3skgl1zEN7J8lJxkvtj/BcMxUAAf6U8z5CLuyqiXNiz5/K3vCeDN91P3H2zGPf/dgdrwPNmhdC4duVXQ1ccCQ9gXDyvEwJHricl1iDH+9Zx/Pdfru0RlyBUNy6nMrE787XLvio99opZkzjoOBSb5LWR1G8U+G8ghguyINyJztszQYGtuQR5qrNMJtiE3g5/WBHhuQk4XVAFD7hZ94AgaZJ574gQIZA05hUAVWEHOkVcFlpBTdVSBOeSzCpgXFBd1XSj2QmdPeeUOllHA7El24siVPVWmiSZAEGPxfTlySzjU/dgznxpuavlct9cUDZvNQEKxdwws5PRFPHHinNnuIAXlLQGYbnGK8g2In+V/40+GqiIDHfT8MPQl1FxlQVeT8QYxTnPJUSgADhyKPer4rXbSbQNkY8nU72rfuNCpLbOouah4djl+6WJWzkSkfw5fIbmcGFBzqdGStCVNK/QOE9X9pYow81skfS5+AKTTeh3d1spJAAAAAElFTkSuQmCC" /></div>
+  <div class="finger"><img
+      src="data:image/png;base64,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" /></div>
+  <div class="text">
+    点击右上角<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAKCAYAAADYUyzjAAAAAXNSR0IArs4c6QAAAJhJREFUOBHNVNsNgCAMJO7FYrgVczgHWyjeJfhTCujHJTa5KKXXK+URQrNaawQyUBr4H5/50ZcxgIaHxAm4AGsnHGlSlI4HYa6YBYyMc13n6AN0PCTnNqws266BoOVBgGdqZcUpTMrbrOBfxizseFGMF+P5bCovxvP1POyh9hAbyU96CN4B74bRN3su9Ly2Es1DabrG4UrvBuPYEgi0dGB2AAAAAElFTkSuQmCC" />图标，选择在safari中打开
+  </div>
+</div>
+</body>
+</html>
